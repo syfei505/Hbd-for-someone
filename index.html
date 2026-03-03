@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Nazwa 🐾🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:'Quicksand',sans-serif;
+  text-align:center;
+  background: linear-gradient(135deg,#fff3a6,#ffd6a5,#ffc1e3);
+  overflow:hidden;
+}
+
+/* HALAMAN AWAL */
+#startScreen{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:linear-gradient(135deg,#fff3a6,#ffc1e3);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+#startScreen button{
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+#startScreen button:hover{transform:scale(1.1);}
+
+/* KONTEN */
+h1{
+  margin-top:60px;
+  font-size:26px;
+  color:#ff4d6d;
+}
+
+.cat-img{
+  width:240px;
+  border-radius:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.25);
+  animation: float 2s infinite alternate;
+  cursor:pointer;
+}
+
+@keyframes float{
+  from{transform:translateY(0px);}
+  to{transform:translateY(-15px);}
+}
+
+#message{
+  display:none;
+  margin:30px;
+  font-size:17px;
+  color:#444;
+  white-space:pre-line;
+}
+
+.confetti{
+  position:absolute;
+  font-size:22px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall{
+  from{transform:translateY(-100vh);}
+  to{transform:translateY(100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN AWAL -->
+<div id="startScreen">
+  <h2>🐱 Ada sesuatu untuk Nazwa 🐾</h2>
+  <button onclick="startWebsite()">Klik untuk Mulai 🎵</button>
+</div>
+
+<!-- YOUTUBE MUSIC -->
+<iframe id="ytplayer"
+  width="0"
+  height="0"
+  src=""
+  frameborder="0"
+  allow="autoplay"
+  allowfullscreen>
+</iframe>
+
+<h1>🎂 Selamat Ulang Tahun 🎂<br>Nazwa Saqila N.M.C 🐾</h1>
+
+<!-- FOTO KUCING DARI LINK GOOGLE -->
+<img src="https://lh3.googleusercontent.com/rd-saves/AA8Ys26ukDEAzZiyVp_DMm2RI2yfNqhCvGA59Yiig34f_jNO_dMwWTifI03I3Iz11IgjJ6KYoxYGirjs-tca2JcYm8_r9uAnFPbNtLYvv_WVSrAJAynx0rwySLTG2EDTIxgMSHU3Ejye_eesrHoWG_4SuGaJXf-JQ9kMMeYceey20BwrN3jdYEVaNMEqsLCB_AJWzpP-OXTaBZpnO5Q8ZZcS1_4Ro8jyRzWt69gBzqUiXtNAjIluAeStTq9yUJOTdHEfLCFtWv1zRVOhGRJ89VyFKDBRacKxdiX2bnk9w5gPJiRJp4xG04qn7XS0BXExGxpX3ldnqFA2wdIzZL3tqC1kdnppBDWocApMwiKlYWmLoJAhqIBcuXwg4tRceejcuxTdKT_AG__c35-WxlEuwPZpg0_QkzYQ5lUj_a6RGbeqt-B4RnreAQe0i0gL0Y6FhTYewBw0wcjrohBSonxwRgZ1Tp9HodD7AxqVmyaNghLafGcexTY9BRCo9jw9HGEEwm8EEnNvqrt06xv4wIavxyvMnLw4AOkzhXjbtTpcBWiIBOc2aySPHXRCi8ILt7tiYeCZnRBvpNhiNXcjKIKyT4S4xfznGi_QYyquUOm9ZpiYa6soOomWD4JOo4K6tBD7N4j0Bog1pncwh5RAl_NrYX2ujHo0tTzko8VOazkA9Hq_p32GtoTaFA5CsuXR9gI7OEJDGY1LDJ6J-J76awczTzLvkqyU_YFM3Yj_EMOD59CNXYv-D0FYmneyPvGuLUQ-pjJzfHmO712kO06E6kryvpdIqB-2m6le2z-m_Bfuz_4H6k1Jcc3zNbaML2vrmUdUUGSpNKBn0EvA_K5rS-AM7w3E86Z44ZK_z6BNoNoRUbU9_47RAPbyw9wI8ahRlPhtWECOPJhyOw28m_YCjHY9S2IBplqXCUc18Y9KSK_DIOASuqQYwoHvXX7C4vOr1OLlNfJt0iUiw7gE1tyh-nRPoVy8T8pgPayU9dJVt8nTj46zEDu0qOg72TjhtzT3dwrdYXDfGHWDOe2aHdYoSCKsxibhpR-rb3P3cpCvlUTXyj_nxgYfhTJk5hqwQFhyvPZ2avg0ARO3JiK1BlwtNDsmnl9o0aS0TXbWaavqohpTbgBhXVpll5bDh2ujbAEc_nGbPlKiuDE4IMPokITItoOtJIpm0aLXNhulE7ZOxVeo4XpqgxxpO-YZCj6MEH5zXzgHp6MhmzQr6z_Y0sq3mg06EZCbvCvEe75WrCqK-TDxrwMIhVkMs8KNMaiQcFcYJWTdxysIu39nbwtLA4ebmJ8SkvSqqkrQmWFwqyoqyZWvjY4KAWJQ9NpwlIpjEAHh1Xs68bl22KIX0Ha2S2AokuUcllG4LRQBK0RQKaopT3ksU544ypqCH7-A9zjF1Vwc9zgtJz3dUNKmczkrnlYS8urOYw=s1002-w564-h1002-n-k?authuser=0&hl=id-ID"
+class="cat-img"
+onclick="mulai()">
+
+<p>Klik kucing gemoynya yaaa 😼💖</p>
+
+<div id="message">
+  <p id="text"></p>
+</div>
+
+<script>
+
+const nama = "Nazwa Saqila N.M.C";
+let i = 0;
+
+let teks = `Hai ${nama} si manusia paling lucu seduniaaa 😆💖
+
+Semoga di umur baru ini kamu makin bahagia,
+makin sukses,
+makin cantik,
+dan makin absurd lucunya 🤣✨
+
+Semoga semua mimpi kamu tercapai,
+dan hidup kamu dipenuhi kebahagiaan sebanyak bulu kucing 🐾💕
+
+Stay cute, stay awesome,
+dan jangan lupa tersenyum yaa 🎉🎂`;
+
+function startWebsite(){
+  document.getElementById("ytplayer").src =
+    "https://www.youtube.com/embed/cUnYmncAvP4?autoplay=1&loop=1&playlist=cUnYmncAvP4";
+
+  document.getElementById("startScreen").style.display="none";
+}
+
+function mulai(){
+  Swal.fire({
+    title:"Meowww 😼",
+    text:`Hari ini ulang tahunnya ${nama} ya?`,
+    icon:"success",
+    confirmButtonText:"Iyaa dong 😆"
+  }).then(()=>{
+      document.getElementById("message").style.display="block";
+      ketik();
+      confetti();
+  });
+}
+
+function ketik(){
+  if(i < teks.length){
+    document.getElementById("text").innerHTML += teks.charAt(i);
+    i++;
+    setTimeout(ketik,35);
+  }
+}
+
+function confetti(){
+  for(let j=0;j<40;j++){
+    let el = document.createElement("div");
+    el.className="confetti";
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDuration=(Math.random()*3+2)+"s";
+    el.innerHTML="🐾";
+    document.body.appendChild(el);
+  }
+}
+
+</script>
+
+</body>
+</html>
